@@ -54,9 +54,17 @@
             color: white;
             text-align: center;
             padding: 10px;
-            position: fixed;
+            position: relative;
             width: 100%;
             bottom: 0;
+        }
+        /* Stylizacja płynnego przewijania */
+        html {
+            scroll-behavior: smooth;
+        }
+        /* Aby sekcje miały wysokość */
+        .container {
+            min-height: 400px;
         }
     </style>
 </head>
@@ -66,40 +74,49 @@
     <h1>Egzotyczne Zwierzęta Świata</h1>
 </header>
 
+<!-- Nawigacja do zakładek -->
 <nav>
     <a href="#about">O Zwierzętach</a>
     <a href="#animals">Galeria</a>
     <a href="#contact">Kontakt</a>
 </nav>
 
+<!-- Sekcja O Zwierzętach -->
 <div class="container" id="about">
     <h2>O Zwierzętach Egzotycznych</h2>
-    <p>Zwierzęta egzotyczne to gatunki, które zwykle nie występują w naturalnym środowisku danej strefy geograficznej. Są one często spotykane w dżunglach, pustyniach i lasach tropikalnych.</p>
+    <p>Zwierzęta egzotyczne to gatunki, które zwykle nie występują w naturalnym środowisku danej strefy geograficznej. Są one często spotykane w dżunglach, pustyniach i lasach tropikalnych. Egzotyczne zwierzęta mogą mieć unikalne cechy, takie jak wyjątkowe kolory, niespotykane wzory na skórze czy futrze, a także nietypowe zachowania, które są fascynujące dla badaczy i miłośników przyrody.</p>
+    <p>Wiele egzotycznych gatunków jest zagrożonych wyginięciem ze względu na niszczenie ich naturalnych siedlisk oraz nielegalny handel. Dlatego ważne jest, aby dbać o ochronę tych niezwykłych stworzeń.</p>
+    <p>Oto kilka przykładów najciekawszych egzotycznych zwierząt, które można spotkać na różnych kontynentach.</p>
 </div>
 
+<!-- Sekcja Galeria Zwierząt -->
 <div class="container" id="animals">
     <h2>Galeria Zwierząt</h2>
     <div class="animal">
         <img src="https://example.com/tiger.jpg" alt="Tygrys">
         <div>
             <h3>Tygrys</h3>
-            <p>Tygrys to największy przedstawiciel rodziny kotowatych. Charakteryzuje się pięknym pomarańczowo-czarnym futrem.</p>
+            <p>Tygrys to największy przedstawiciel rodziny kotowatych. Charakteryzuje się pięknym pomarańczowo-czarnym futrem. Można go spotkać w dżunglach Azji, a jego majestatyczna sylwetka wzbudza respekt w świecie zwierząt.</p>
         </div>
     </div>
     <div class="animal">
         <img src="https://example.com/parrot.jpg" alt="Papuga">
         <div>
             <h3>Papuga</h3>
-            <p>Papugi to kolorowe ptaki zamieszkujące tropikalne regiony. Są znane z inteligencji i zdolności naśladowania dźwięków.</p>
+            <p>Papugi to kolorowe ptaki zamieszkujące tropikalne regiony Ameryki Południowej, Australii i Afryki. Są znane z inteligencji i zdolności naśladowania dźwięków. Papugi mogą żyć do 80 lat!</p>
         </div>
     </div>
 </div>
 
+<!-- Sekcja Kontakt -->
 <div class="container" id="contact">
     <h2>Kontakt</h2>
-    <p>Jeśli masz pytania dotyczące zwierząt egzotycznych, napisz do nas: <a href="mailto:kontakt@egzotycznezwierzeta.pl">kontakt@egzotycznezwierzeta.pl</a></p>
+    <p>Jeśli masz pytania dotyczące zwierząt egzotycznych, skontaktuj się z nami:</p>
+    <p>Email: <a href="mailto:kontakt@egzotycznezwierzeta.pl">kontakt@egzotycznezwierzeta.pl</a></p>
+    <p>Telefon: +48 123 456 789</p>
 </div>
 
+<!-- Stopka strony -->
 <footer>
     <p>&copy; 2024 Egzotyczne Zwierzęta. Wszelkie prawa zastrzeżone.</p>
 </footer>
