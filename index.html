@@ -11,15 +11,20 @@
             margin: 0;
             padding: 0;
             scroll-behavior: smooth;
+            overflow-x: hidden;
         }
         header {
-            background-image: url('https://example.com/exotic-background.jpg');
+            background-image: url('https://youyuu0.github.io/Hacia3/exotic-background.jpg');
             background-size: cover;
             background-position: center;
             color: white;
             text-align: center;
-            padding: 60px 20px;
+            padding: 80px 20px;
             position: relative;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         header::after {
             content: '';
@@ -33,12 +38,16 @@
         header h1 {
             position: relative;
             z-index: 1;
-            font-size: 3rem;
+            font-size: 4rem;
+            animation: fadeInDown 1.5s ease-out;
         }
         nav {
             background-color: #333;
             display: flex;
             justify-content: center;
+            position: sticky;
+            top: 0;
+            z-index: 10;
         }
         nav a {
             color: white;
@@ -50,32 +59,36 @@
             background-color: #4CAF50;
         }
         .container {
-            padding: 40px 20px;
+            padding: 60px 20px;
             max-width: 1200px;
             margin: 0 auto;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 1s forwards;
         }
         h2 {
             color: #4CAF50;
             text-align: center;
-            margin-bottom: 20px;
-            font-size: 2rem;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
         }
         .animal {
             display: flex;
             align-items: center;
             background-color: white;
             border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             margin-bottom: 20px;
             overflow: hidden;
-            transition: transform 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
         .animal:hover {
             transform: scale(1.05);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
         }
         .animal img {
-            width: 150px;
-            height: 150px;
+            width: 180px;
+            height: 180px;
             object-fit: cover;
             margin-right: 20px;
             border-radius: 8px 0 0 8px;
@@ -83,11 +96,70 @@
         .animal div {
             padding: 10px;
         }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .btn:hover {
+            background-color: #45a049;
+            transform: scale(1.1);
+        }
+        .parallax {
+            background-image: url('https://youyuu0.github.io/Hacia3/forest-parallax.jpg');
+            height: 400px;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+        }
+        .fact-card {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin: 10px;
+            width: calc(33.333% - 20px);
+            display: inline-block;
+            vertical-align: top;
+            animation: fadeIn 1.5s forwards;
+        }
+        .fact-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+        }
         footer {
             background-color: #333;
             color: white;
             text-align: center;
             padding: 20px;
+        }
+        /* Animacje */
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         /* Responsywność */
         @media (max-width: 768px) {
@@ -100,17 +172,13 @@
                 height: auto;
                 border-radius: 8px 8px 0 0;
             }
+            .fact-card {
+                width: calc(50% - 20px);
+            }
         }
-        /* Animacje wchodzenia sekcji */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeIn 0.8s forwards;
-        }
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
-                transform: translateY(0);
+        @media (max-width: 480px) {
+            .fact-card {
+                width: 100%;
             }
         }
     </style>
@@ -124,26 +192,31 @@
 <nav>
     <a href="#about">O Zwierzętach</a>
     <a href="#animals">Galeria</a>
+    <a href="#threats">Zagrożenia</a>
+    <a href="#facts">Ciekawostki</a>
     <a href="#contact">Kontakt</a>
 </nav>
 
-<div class="container fade-in" id="about">
+<div class="container" id="about">
     <h2>O Zwierzętach Egzotycznych</h2>
     <p>Zwierzęta egzotyczne to gatunki, które zwykle nie występują w naturalnym środowisku danej strefy geograficznej. Są one często spotykane w dżunglach, pustyniach i lasach tropikalnych. Egzotyczne zwierzęta mogą mieć unikalne cechy, takie jak wyjątkowe kolory, niespotykane wzory na skórze czy futrze, a także nietypowe zachowania, które są fascynujące dla badaczy i miłośników przyrody.</p>
     <p>Wiele egzotycznych gatunków jest zagrożonych wyginięciem ze względu na niszczenie ich naturalnych siedlisk oraz nielegalny handel. Dlatego ważne jest, aby dbać o ochronę tych niezwykłych stworzeń.</p>
+    <button class="btn">Dowiedz się więcej</button>
 </div>
 
-<div class="container fade-in" id="animals">
+<div class="parallax"></div>
+
+<div class="container" id="animals">
     <h2>Galeria Zwierząt</h2>
     <div class="animal">
-        <img src="https://example.com/tiger.jpg" alt="Tygrys">
+        <img src="https://youyuu0.github.io/Hacia3/tiger.jpg" alt="Tygrys">
         <div>
             <h3>Tygrys</h3>
             <p>Tygrys to największy przedstawiciel rodziny kotowatych. Charakteryzuje się pięknym pomarańczowo-czarnym futrem. Można go spotkać w dżunglach Azji, a jego majestatyczna sylwetka wzbudza respekt w świecie zwierząt.</p>
         </div>
     </div>
     <div class="animal">
-        <img src="https://example.com/parrot.jpg" alt="Papuga">
+        <img src="https://youyuu0.github.io/Hacia3/parrot.jpg" alt="Papuga">
         <div>
             <h3>Papuga</h3>
             <p>Papugi to kolorowe ptaki zamieszkujące tropikalne regiony Ameryki Południowej, Australii i Afryki. Są znane z inteligencji i zdolności naśladowania dźwięków. Papugi mogą żyć do 80 lat!</p>
@@ -151,7 +224,31 @@
     </div>
 </div>
 
-<div class="container fade-in" id="contact">
+<div class="container" id="threats">
+    <h2>Zagrożenia dla Zwierząt Egzotycznych</h2>
+    <p>Zwierzęta egzotyczne stoją przed wieloma zagrożeniami, w tym utratą siedlisk, polowaniami i zmianami klimatu. Każdego roku wiele z tych gatunków traci swoje naturalne siedliska na rzecz rozwoju ludzkiego.</p>
+    <p>Nielegalny handel zwierzętami stanowi ogromne zagrożenie, powodując spadek populacji wielu gatunków. Organizacje na całym świecie walczą o ochronę i zachowanie tych unikalnych stworzeń, wprowadzając programy ochronne i edukacyjne.</p>
+</div>
+
+<div class="parallax"></div>
+
+<div class="container" id="facts">
+    <h2>Ciekawostki o Zwierzętach Egzotycznych</h2>
+    <div class="fact-card">
+        <h3>Rekin Wielorybi</h3>
+        <p>Największa ryba na świecie może osiągnąć długość do 18 metrów. Jest łagodnym gigantem, który żywi się planktonem.</p>
+    </div>
+    <div class="fact-card">
+        <h3>Słoń Afrykański</h3>
+        <p>Słonie afrykańskie są największymi zwierzętami lądowymi na świecie. Ich uszy pomagają w regulacji temperatury ciała.</p>
+    </div>
+    <div class="fact-card">
+        <h3>Lemur Katta</h3>
+        <p>Znany z wyspy Madagaskar, lemur katta posiada długi, prążkowany ogon i jest bardzo towarzyski.</p>
+    </div>
+</div>
+
+<div class="container" id="contact">
     <h2>Kontakt</h2>
     <p>Jeśli masz pytania dotyczące zwierząt egzotycznych, skontaktuj się z nami:</p>
     <p>Email: <a href="mailto:kontakt@egzotycznezwierzeta.pl">kontakt@egzotycznezwierzeta.pl</a></p>
