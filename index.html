@@ -6,65 +6,112 @@
     <title>Zwierzęta Egzotyczne</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             background-color: #f0f8ff;
             margin: 0;
             padding: 0;
+            scroll-behavior: smooth;
         }
         header {
-            background-color: #4CAF50;
+            background-image: url('https://example.com/exotic-background.jpg');
+            background-size: cover;
+            background-position: center;
             color: white;
             text-align: center;
-            padding: 1rem;
+            padding: 60px 20px;
+            position: relative;
+        }
+        header::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        header h1 {
+            position: relative;
+            z-index: 1;
+            font-size: 3rem;
         }
         nav {
             background-color: #333;
-            overflow: hidden;
+            display: flex;
+            justify-content: center;
         }
         nav a {
-            float: left;
-            display: block;
             color: white;
-            text-align: center;
-            padding: 14px 20px;
             text-decoration: none;
+            padding: 14px 20px;
+            transition: background 0.3s;
         }
         nav a:hover {
-            background-color: #ddd;
-            color: black;
+            background-color: #4CAF50;
         }
         .container {
-            padding: 20px;
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
         h2 {
             color: #4CAF50;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 2rem;
         }
         .animal {
             display: flex;
+            align-items: center;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             margin-bottom: 20px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+        .animal:hover {
+            transform: scale(1.05);
         }
         .animal img {
             width: 150px;
             height: 150px;
             object-fit: cover;
             margin-right: 20px;
+            border-radius: 8px 0 0 8px;
+        }
+        .animal div {
+            padding: 10px;
         }
         footer {
             background-color: #333;
             color: white;
             text-align: center;
-            padding: 10px;
-            position: relative;
-            width: 100%;
-            bottom: 0;
+            padding: 20px;
         }
-        /* Stylizacja płynnego przewijania */
-        html {
-            scroll-behavior: smooth;
+        /* Responsywność */
+        @media (max-width: 768px) {
+            .animal {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .animal img {
+                width: 100%;
+                height: auto;
+                border-radius: 8px 8px 0 0;
+            }
         }
-        /* Aby sekcje miały wysokość */
-        .container {
-            min-height: 400px;
+        /* Animacje wchodzenia sekcji */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.8s forwards;
+        }
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
@@ -74,23 +121,19 @@
     <h1>Egzotyczne Zwierzęta Świata</h1>
 </header>
 
-<!-- Nawigacja do zakładek -->
 <nav>
     <a href="#about">O Zwierzętach</a>
     <a href="#animals">Galeria</a>
     <a href="#contact">Kontakt</a>
 </nav>
 
-<!-- Sekcja O Zwierzętach -->
-<div class="container" id="about">
+<div class="container fade-in" id="about">
     <h2>O Zwierzętach Egzotycznych</h2>
     <p>Zwierzęta egzotyczne to gatunki, które zwykle nie występują w naturalnym środowisku danej strefy geograficznej. Są one często spotykane w dżunglach, pustyniach i lasach tropikalnych. Egzotyczne zwierzęta mogą mieć unikalne cechy, takie jak wyjątkowe kolory, niespotykane wzory na skórze czy futrze, a także nietypowe zachowania, które są fascynujące dla badaczy i miłośników przyrody.</p>
     <p>Wiele egzotycznych gatunków jest zagrożonych wyginięciem ze względu na niszczenie ich naturalnych siedlisk oraz nielegalny handel. Dlatego ważne jest, aby dbać o ochronę tych niezwykłych stworzeń.</p>
-    <p>Oto kilka przykładów najciekawszych egzotycznych zwierząt, które można spotkać na różnych kontynentach.</p>
 </div>
 
-<!-- Sekcja Galeria Zwierząt -->
-<div class="container" id="animals">
+<div class="container fade-in" id="animals">
     <h2>Galeria Zwierząt</h2>
     <div class="animal">
         <img src="https://example.com/tiger.jpg" alt="Tygrys">
@@ -108,15 +151,13 @@
     </div>
 </div>
 
-<!-- Sekcja Kontakt -->
-<div class="container" id="contact">
+<div class="container fade-in" id="contact">
     <h2>Kontakt</h2>
     <p>Jeśli masz pytania dotyczące zwierząt egzotycznych, skontaktuj się z nami:</p>
     <p>Email: <a href="mailto:kontakt@egzotycznezwierzeta.pl">kontakt@egzotycznezwierzeta.pl</a></p>
     <p>Telefon: +48 123 456 789</p>
 </div>
 
-<!-- Stopka strony -->
 <footer>
     <p>&copy; 2024 Egzotyczne Zwierzęta. Wszelkie prawa zastrzeżone.</p>
 </footer>
